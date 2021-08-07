@@ -4,6 +4,8 @@
 #include <ArduinoJson.h>
 #include <SoftwareSerial.h>
 
+#include "PID.h"
+
 uint8_t i2c_data[14];
 double accX, accY, accZ;
 double gyroX, gyroY, gyroZ;
@@ -129,9 +131,19 @@ void loop() {
   measure["pitch"] = pitch;
   measure["roll"] = roll;
   measure["res"] = res;
+  measure["kp"] = kp;
+  measure["kd"] = kd;
+  measure["ki"] = ki;
   
   data["measure"] = measure;
   data.printTo(Serial);
 
   Serial.print("\n");
+
+//  if (Serial.available() > 0){
+//    char dados;
+//    dados = Serial.read();
+//    Serial.print(dados);
+//    dados = dados.split(":");
+//  }
 }

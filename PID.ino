@@ -1,13 +1,3 @@
-
-double kp = 22.0;
-double kd = 2.5; 
-double ki = 4;
-
-int OUTMAX = 200;
-int OUTMIN = -200;
-
-double SetPoint = 2.5;
-
 float lastInput = 0.0;
 
 double ITerm = 0.0;
