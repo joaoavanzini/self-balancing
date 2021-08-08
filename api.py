@@ -17,18 +17,9 @@ def home():
 
 @app.route('/api/v0.01/selfbalancing/mongodb/all', methods=['GET'])
 def api_all():
-    x = collection_mongodb.find({})
-    for y in x:
-        json_final = {
-            "gyroy": y["gyroy"],
-            "kalangley": y["kalangley"],
-            "pitch": y["pitch"],
-            "res": y["res"],
-            "kd": y["kd"],
-            "ki": y["ki"],
-            "kp": y["kp"]
-        }
-    print(json_final)
-    return jsonify(json_final)
+    x = collection_mongodb.find({}, {'_id':False})
+    docs = list(x)
+    print(docs)
+    return jsonify(docs)
 
-app.run()
+app.run(host="0.0.0.0")
