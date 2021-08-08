@@ -43,8 +43,19 @@ def subscribe(client_mqtt: mqtt_client):
             }
         ]
         client_influx.write_points(json_body)
-        print(f"{msg.topic} {value}")
-        insert_mongodb = collection_mongodb.insert_one(json.loads(value))
+        print("inserted data on influxdb")
+        value = json.loads(value)
+        json_mongo = {
+            "gyroy":value["measure"]["gyroy"],
+            "kalangley":value["measure"]["kalangley"],
+            "pitch":value["measure"]["pitch"],
+            "res":value["measure"]["res"],
+            "kd":value["measure"]["kd"],
+            "ki":value["measure"]["ki"],
+            "kp":value["measure"]["kp"],
+            }
+        insert_mongodb = collection_mongodb.insert_one(json_mongo)
+        print("inserted data on mongodb")
     client_mqtt.subscribe(topic_mqtt)
     client_mqtt.on_message = on_message
 
@@ -54,5 +65,5 @@ def run():
     client_mqtt.loop_forever()
 
 if __name__ == "__main__":
-    client_influx.create_database(database_influx)
+    #client_influx.create_database(database_influx)
     run()
