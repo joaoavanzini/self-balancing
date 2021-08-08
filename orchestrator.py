@@ -1,6 +1,9 @@
 from paho.mqtt import client as mqtt_client
-import random
 from influxdb import InfluxDBClient
+from pymongo import MongoClient
+import pymongo
+import random
+import json
 
 broker_mqtt = "localhost"
 port_mqtt = 1883
@@ -10,8 +13,11 @@ client_id_mqtt = f'python-mqtt-{random.randint(0, 1000)}'
 server_influx = "localhost"
 port_influx = 8086
 database_influx = "selfbalancing"
-
 client_influx = InfluxDBClient(host=server_influx, port=port_influx, database=database_influx)
+
+client_mongodb = MongoClient('localhost', 27017)
+database_mongodb = client_mongodb["selfbalancing"]
+collection_mongodb = database_mongodb["selfbalancing"]
 
 def connect_mqtt():
     def on_connect(client_mqtt, userdata, flags, rc):
@@ -38,6 +44,7 @@ def subscribe(client_mqtt: mqtt_client):
         ]
         client_influx.write_points(json_body)
         print(f"{msg.topic} {value}")
+        insert_mongodb = collection_mongodb.insert_one(json.loads(value))
     client_mqtt.subscribe(topic_mqtt)
     client_mqtt.on_message = on_message
 
