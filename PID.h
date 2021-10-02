@@ -1,9 +1,9 @@
 #ifndef _PID_H_
 #define _PID_H_
 
-double kp = 22.0;
-double kd = 1; 
-double ki = 5;
+double kp = 27;
+double kd = 4; 
+double ki = 3;
 
 int OUTMAX = 200;
 int OUTMIN = -200;

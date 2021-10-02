@@ -15,11 +15,19 @@ def home():
     return '''<h1>API v.0.01</h1>
     <p>A prototype API for reading self-balancing information</p>'''
 
-@app.route('/api/v0.01/selfbalancing/mongodb/all', methods=['GET'])
+@app.route('/api/v0.1/selfbalancing/mongodb/all', methods=['GET'])
 def api_all():
     x = collection_mongodb.find({}, {'_id':False})
     docs = list(x)
     print(docs)
     return jsonify(docs)
+
+@app.route('/api/v0.1/selfbalancing/mongodb/1000', methods=['GET'])
+def api_1000():
+    x = collection_mongodb.find({}, {'_id':False})
+    docs = list(x)
+    print(docs)
+    return jsonify(docs[:1000])
+
 
 app.run(host="0.0.0.0")

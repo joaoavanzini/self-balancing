@@ -4,8 +4,8 @@
 
 #define MAX_DELAY 1000
 
-const char* ssid = "nobyte 2.5";
-const char* pass = "fjmwifi2019B";
+const char* ssid = "nobyte";
+const char* pass = "fjmwifi2021#";
 
 const char* mqtt_server = "192.168.15.131";
 const char* mqtt_topic = "selfbalancing";
