@@ -36,8 +36,10 @@ The goal of this project is to create a walking robot that can balance itself us
 - Python
 - C/C++
 - Arduino
+- ESP8266
 - Artificial Intelligence
 - Machine Learning
+- Deep Learning
 
 # 🎒 Institution
 
@@ -46,7 +48,7 @@ The goal of this project is to create a walking robot that can balance itself us
 # 🏷 FAQ's
 
 - If you have any questions or corrections, please open an issue so that we can resolve it as soon as possible.
-- For any other questions or concerns, please contact us.
+- For any other questions or concerns, please contact me.
 
 # 👨‍💻 Creator
 
