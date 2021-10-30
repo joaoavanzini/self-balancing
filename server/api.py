@@ -2,6 +2,7 @@ import flask
 from flask import request, jsonify
 from pymongo import MongoClient
 import json
+from influxdb import InfluxDBClient
 
 client_mongodb = MongoClient('localhost', 27017)
 database_mongodb = client_mongodb["selfbalancing"]
@@ -28,6 +29,15 @@ def api_1000():
     docs = list(x)
     print(docs)
     return jsonify(docs[:1000])
+
+
+@app.route('/api/v0.1/selfbalancing/influx/all', methods=['GET'])
+def api_influx_all():
+    client = InfluxDBClient(host='localhost', port=8086)
+    client.switch_database('selfbalancing')
+    query = 'SELECT * FROM selfbalancing'
+    result = client.query(query)
+    return jsonify(list(result))
 
 
 app.run(host="0.0.0.0")
