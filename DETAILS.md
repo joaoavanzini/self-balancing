@@ -20,3 +20,5 @@
 ## Photos:
 <p align="center"><img src = "photos/self-balancing-01.jpeg"></p>
 <p align="center"><img src = "photos/self-balancing-02.jpeg"></p>
+<p align="center"><img src = "photos/self-balancing-03.jpeg"></p>
+<p align="center"><img src = "photos/self-balancing-04.jpeg"></p>
